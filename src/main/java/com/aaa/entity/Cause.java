@@ -1,11 +1,18 @@
 package com.aaa.entity;
-
-import org.apache.ibatis.annotations.Insert;
-
+//投诉标签表
 public class Cause {
     private Integer cau_id;
     private String cau_name;
     private Integer cau_type;
+
+    public Cause() {
+    }
+
+    public Cause(Integer cau_id, String cau_name, Integer cau_type) {
+        this.cau_id = cau_id;
+        this.cau_name = cau_name;
+        this.cau_type = cau_type;
+    }
 
     public Integer getCau_id() {
         return cau_id;
