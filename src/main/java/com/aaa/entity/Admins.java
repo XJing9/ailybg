@@ -9,6 +9,15 @@ public class Admins {
     private String adm_pwd;
     private Integer rol_id;
     private Integer adm_state;
+    private String adm_phone;
+
+    public String getAdm_phone() {
+        return adm_phone;
+    }
+
+    public void setAdm_phone(String adm_phone) {
+        this.adm_phone = adm_phone;
+    }
 
     public Integer getAdm_id() {
         return adm_id;

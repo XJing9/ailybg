@@ -5,6 +5,16 @@ public class Permission {
     private String per_name;
     private Integer per_url;
     private Integer per_parent;
+    private String per_icon;
+    private String per_click;
+
+    public String getPer_click() {
+        return per_click;
+    }
+
+    public void setPer_click(String per_click) {
+        this.per_click = per_click;
+    }
 
     @Override
     public String toString() {
@@ -14,6 +24,14 @@ public class Permission {
                 ", per_url=" + per_url +
                 ", per_parent=" + per_parent +
                 '}';
+    }
+
+    public String getPer_icon() {
+        return per_icon;
+    }
+
+    public void setPer_icon(String per_icon) {
+        this.per_icon = per_icon;
     }
 
     public Integer getPer_id() {
