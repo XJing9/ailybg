@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.CustomerDao">
+    <select id="customer_selectAll" parameterType="com.aaa.entity.Customer" resultType="com.aaa.entity.Customer">
+        select * from customer
+        <where>
+            <if test="cus_name!=null and cus_name!=''">
+                cus_name=#{cus_name}
+            </if>
+        </where>
+    </select>
+    <insert id="customer_insert" parameterType="com.aaa.entity.Customer">
+
+    </insert>
+    <update id="customer_update" parameterType="com.aaa.entity.Customer">
+        update customer set cus_state=#{cus_state} where cus_id=#{cus_id}
+    </update>
+</mapper>

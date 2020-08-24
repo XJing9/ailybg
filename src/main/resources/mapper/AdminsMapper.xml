@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.AdminsDao">
+    <insert id="admins_insert" parameterType="com.aaa.entity.Admins">
+        insert into admins
+        (adm_name,adm_pwd,adm_phone,rol_id)
+        values
+        (#{adm_name},#{adm_pwd},#{adm_phone},#{rol_id})
+    </insert>
+    <update id="admins_update" parameterType="com.aaa.entity.Admins">
+        update admins
+        <set>
+            <if test="adm_phone!=null and adm_phone!=''">
+                adm_phone=#{adm_phone},
+            </if>
+            <if test="adm_pwd!=null and adm_pwd!=''">
+                adm_pwd=#{adm_pwd},
+            </if>
+            <if test="adm_state!=null and adm_state!=''">
+                adm_state=#{adm_state},
+            </if>
+            <if test="rol_id!=null and rol_id!=''">
+                rol_id=#{rol_id},
+            </if>
+            adm_id=#{adm_id}
+        </set>
+        where adm_id=#{adm_id}
+    </update>
+    <select id="admins_query" resultType="map" parameterType="com.aaa.entity.Admins">
+        select a.*,r.rol_name from admins a join role r on a.rol_id=r.rol_id
+        <where>
+            <if test="adm_name!=null and adm_name!=''">
+                adm_name=#{adm_name}
+            </if>
+            <if test="rol_id!=null and rol_id!=''">
+                and rol_id=#{rol_id}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.PermissionDao">
+    <update id="permission_update" parameterType="com.aaa.entity.Permission">
+        update permission
+        <set>
+            <if test="per_name!=null and per_name!=''">
+                per_name=#{per_name},
+            </if>
+            <if test="per_url != null">
+                per_url=#{per_url},
+            </if>
+            <if test="per_icon != null">
+                per_icon=#{per_icon},
+            </if>
+            <if test="per_click != null">
+                per_click=#{per_click},
+            </if>
+            per_id=#{per_id}
+        </set>
+        where per_id=#{per_id}
+    </update>
+    <insert id="permission_insert" parameterType="com.aaa.entity.Permission">
+        insert into permission
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="per_name != null">
+                per_name,
+            </if>
+            <if test="per_url != null">
+                per_url,
+            </if>
+            <if test="per_icon != null">
+                per_icon,
+            </if>
+            <if test="per_click != null">
+                per_click,
+            </if>
+            <if test="per_parent != null">
+                per_parent,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="per_id != null">
+                #{per_id},
+            </if>
+            <if test="per_name != null">
+                #{per_name},
+            </if>
+            <if test="per_url != null">
+                #{per_url},
+            </if>
+            <if test="per_icon != null">
+                #{per_icon},
+            </if>
+            <if test="per_click != null">
+                #{per_click},
+            </if>
+            <if test="per_parent != null">
+                #{per_parent},
+            </if>
+        </trim>
+    </insert>
+</mapper>
