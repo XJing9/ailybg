@@ -45,8 +45,10 @@ public class PermissionCon {
         for(Map<String,Object> m:listOne){
             //当前一级菜单下的二级菜单
             List<Map<String,Object>> listTwo=permissionDao.menu_twoQueryAll((Integer) m.get("per_id"));
+
             System.out.println(listTwo.toString());
             m.put("listTwo",listTwo);
+            m.put("twoLength",listTwo.size());
         }
         return listOne;
     }

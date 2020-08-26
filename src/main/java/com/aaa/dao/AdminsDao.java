@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Admins;
+import com.aaa.util.PageHelpers;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface AdminsDao extends tk.mybatis.mapper.common.Mapper<Admins> {
     @Delete("delete from admins where adm_id=#{adm_id}")
     Integer admins_delete(Integer adm_id);
     Integer admins_insert(Admins admins);
+    @Select("select count(adm_id) from admins")
+    Integer toatalCount();
 }

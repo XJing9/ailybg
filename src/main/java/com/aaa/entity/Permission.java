@@ -3,19 +3,9 @@ package com.aaa.entity;
 public class Permission {
     private Integer per_id;
     private String per_name;
-    private Integer per_url;
+    private String per_url;
     private Integer per_parent;
     private String per_icon;
-    private String per_click;
-
-    public String getPer_click() {
-        return per_click;
-    }
-
-    public void setPer_click(String per_click) {
-        this.per_click = per_click;
-    }
-
     @Override
     public String toString() {
         return "Permission{" +
@@ -50,11 +40,11 @@ public class Permission {
         this.per_name = per_name;
     }
 
-    public Integer getPer_url() {
+    public String getPer_url() {
         return per_url;
     }
 
-    public void setPer_url(Integer per_url) {
+    public void setPer_url(String per_url) {
         this.per_url = per_url;
     }
 

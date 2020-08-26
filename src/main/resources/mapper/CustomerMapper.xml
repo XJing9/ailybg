@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.dao.CustomerDao">
-    <select id="customer_selectAll" parameterType="com.aaa.entity.Customer" resultType="com.aaa.entity.Customer">
+    <select id="customer_selectAll" parameterType="com.aaa.entity.Customer" resultType="map">
         select * from customer
         <where>
             <if test="cus_name!=null and cus_name!=''">

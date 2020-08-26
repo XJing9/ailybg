@@ -15,9 +15,6 @@
             <if test="per_icon != null">
                 per_icon=#{per_icon},
             </if>
-            <if test="per_click != null">
-                per_click=#{per_click},
-            </if>
             per_id=#{per_id}
         </set>
         where per_id=#{per_id}
@@ -33,9 +30,6 @@
             </if>
             <if test="per_icon != null">
                 per_icon,
-            </if>
-            <if test="per_click != null">
-                per_click,
             </if>
             <if test="per_parent != null">
                 per_parent,
@@ -53,9 +47,6 @@
             </if>
             <if test="per_icon != null">
                 #{per_icon},
-            </if>
-            <if test="per_click != null">
-                #{per_click},
             </if>
             <if test="per_parent != null">
                 #{per_parent},

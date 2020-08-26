@@ -2,6 +2,9 @@ package com.aaa.controller;
 import com.aaa.dao.AdminsDao;
 import com.aaa.dao.PermissionDao;
 import com.aaa.entity.Admins;
+import com.aaa.util.PageHelpers;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,8 +37,15 @@ public class AdminsCon {
         return adminsDao.admins_insert(admins);
     }
     @RequestMapping("admins_query")
-    public List<Map<String,Object>> admins_query(Admins admins){
-        return adminsDao.admins_query(admins);
+    public PageHelpers admins_query(PageHelpers ph,Admins admins){
+        PageHelper.startPage(ph.getPageNum(),ph.getPageSize());
+        List<Map<String, Object>> adminsList=adminsDao.admins_query(admins);
+        ph.setRows(adminsList);
+        PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(adminsList);
+        int pages=pageInfo.getPages();
+        ph.setLastPage(pages);
+        ph.setTotalCount(adminsDao.toatalCount());
+        return ph;
     }
     @RequestMapping("admins_delete")
     public Integer admins_delete(Integer adm_id){
