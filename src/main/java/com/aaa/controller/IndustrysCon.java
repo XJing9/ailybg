@@ -18,4 +18,8 @@ public class IndustrysCon {
     public List<Industrys> queryAll(){
         return industrysDao.selectAll();
     }
+    @RequestMapping("insert")
+    public Integer insert(Industrys industrys){
+        return industrysDao.insert(industrys);
+    }
 }
