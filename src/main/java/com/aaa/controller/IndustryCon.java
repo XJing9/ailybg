@@ -28,13 +28,20 @@ public class IndustryCon {
 
     @RequestMapping("delete")
     public Integer delete(Integer ind_id){
-        return industryDao.delete( ind_id);
+        return industryDao.deletes(ind_id);
+    }
 
+    @RequestMapping("insert")
+    public Integer insert(Industry industry){
+        return industryDao.inserts(industry);
     }
 
     @RequestMapping("update")
-    public String update(Industry industry){
-        industryDao.update(industry);
-        return "OK";
+    public Integer update(Industry industry){
+        return industryDao.updates(industry);
+    }
+    @RequestMapping("updateState")
+    public Integer updateState(Industry industry){
+        return industryDao.updateState(industry);
     }
 }

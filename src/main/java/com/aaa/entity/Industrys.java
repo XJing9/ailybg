@@ -1,28 +1,12 @@
 package com.aaa.entity;
 
+import javax.persistence.Id;
 import java.util.List;
 
 public class Industrys {
+    @Id
     private Integer indu_id;
     private String indu_name;
-    private List<Industry> industry;
-
-    public List<Industry> getIndustry() {
-        return industry;
-    }
-
-    public void setIndustry(List<Industry> industry) {
-        this.industry = industry;
-    }
-
-    @Override
-    public String toString() {
-        return "Industrys{" +
-                "indu_id=" + indu_id +
-                ", indu_name='" + indu_name + '\'' +
-                ", industry=" + industry +
-                '}';
-    }
 
     public Integer getIndu_id() {
         return indu_id;

@@ -15,7 +15,7 @@ public interface PermissionDao extends Mapper<Permission> {
     @Select("select per.* from permission per join per_rol pr on per.per_id=pr.per_id where pr.rol_id=#{rol_id} and per_parent=0")
     List<Map<String,Object>> menu_one(Integer rol_id);
 
-    @Select("select p.*,(SELECT count(rol_id) FROM per_rol pr where pr.rol_id=#{rol_id} and pr.per_id=p.per_id)\n" +
+    @Select("select p.*,(SELECT count(rol_id) FROM per_rol pr where pr.rol_id=#{rol_id} and pr.per_id=p.per_id) ischecked\n" +
             "from permission p where p.per_parent=#{per_id}")
     List<Map<String,Object>> menu_two(@Param("rol_id") Integer rol_id, @Param("per_id") Integer per_id);
     Integer permission_insert(Permission permission);

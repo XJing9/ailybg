@@ -37,15 +37,8 @@ public class AdminsCon {
         return adminsDao.admins_insert(admins);
     }
     @RequestMapping("admins_query")
-    public PageHelpers admins_query(PageHelpers ph,Admins admins){
-        PageHelper.startPage(ph.getPageNum(),ph.getPageSize());
-        List<Map<String, Object>> adminsList=adminsDao.admins_query(admins);
-        ph.setRows(adminsList);
-        PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(adminsList);
-        int pages=pageInfo.getPages();
-        ph.setLastPage(pages);
-        ph.setTotalCount(adminsDao.toatalCount());
-        return ph;
+    public List<Map<String,Object>> admins_query(Admins admins){
+        return adminsDao.admins_query(admins);
     }
     @RequestMapping("admins_delete")
     public Integer admins_delete(Integer adm_id){

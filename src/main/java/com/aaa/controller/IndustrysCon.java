@@ -22,4 +22,13 @@ public class IndustrysCon {
     public Integer insert(Industrys industrys){
         return industrysDao.insert(industrys);
     }
+    @RequestMapping("delete")
+    public Integer delete(Integer indu_id){
+        return industrysDao.deleteByPrimaryKey(indu_id);
+    }
+    @RequestMapping("update")
+    public Integer update(Industrys industrys){
+        return industrysDao.updateByPrimaryKey(industrys);
+    }
+
 }

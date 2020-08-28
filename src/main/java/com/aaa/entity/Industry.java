@@ -1,10 +1,22 @@
 package com.aaa.entity;
 
+import javax.persistence.Id;
+
 public class Industry {
+    @Id
     private Integer ind_id;
     private String ind_name;
     private Integer ind_state;
     private Integer indu_id;
+    private String indu_name;
+
+    public String getIndu_name() {
+        return indu_name;
+    }
+
+    public void setIndu_name(String indu_name) {
+        this.indu_name = indu_name;
+    }
 
     public Integer getIndu_id() {
         return indu_id;
