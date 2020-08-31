@@ -26,6 +26,7 @@ public class PhotoCon {
     @Value("${prop.filepath}")
     String filepath;
 
+
     @RequestMapping("add")
     @ResponseBody
     public String addpho(@RequestParam("photo") MultipartFile[] photo)throws IOException {
@@ -70,6 +71,9 @@ public class PhotoCon {
         //复制文件
         FileCopyUtils.copy(fileInputStream,outputStream);
     }*/
+
+
+
 }
 
 

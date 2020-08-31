@@ -20,12 +20,12 @@ public class PermissionCon {
     @RequestMapping("menu_one")
     public List<Map<String,Object>> menu_one(Per_rol per_rol){
         //System.out.println(permissionDao.menu_one(rol_id));
-        //获取一级菜单
+        //锟斤拷取一锟斤拷锟剿碉拷
         List<Map<String,Object>> listOne=permissionDao.menu_one(per_rol.getRol_id());
         System.out.println(listOne);
-        //获取二级菜单
+        //锟斤拷取锟斤拷锟斤拷锟剿碉拷
         for(Map<String,Object> m:listOne){
-            //当前一级菜单下的二级菜单
+            //锟斤拷前一锟斤拷锟剿碉拷锟铰的讹拷锟斤拷锟剿碉拷
             System.out.println(per_rol.getRol_id());
             System.out.println((Integer) m.get("per_id"));
             List<Map<String,Object>> listTwo=permissionDao.menu_two(per_rol.getRol_id(), (Integer) m.get("per_id"));
@@ -41,9 +41,8 @@ public class PermissionCon {
     @RequestMapping("menu_query")
     public List<Map<String,Object>> menu_query(){
         List<Map<String,Object>> listOne=permissionDao.menu_query();
-        //获取二级菜单
         for(Map<String,Object> m:listOne){
-            //当前一级菜单下的二级菜单
+            //锟斤拷前一锟斤拷锟剿碉拷锟铰的讹拷锟斤拷锟剿碉拷
             List<Map<String,Object>> listTwo=permissionDao.menu_twoQueryAll((Integer) m.get("per_id"));
 
             System.out.println(listTwo.toString());

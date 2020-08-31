@@ -16,7 +16,7 @@ public class ComplaintCon {
     @Resource
     private ComplaintDao complaintDao;
     @Resource
-    private AdminDao adminDao;
+    private AdminsDao adminDao;
     @Resource
     private CustomerDao customerDao;
     @Resource
@@ -27,14 +27,15 @@ public class ComplaintCon {
     @RequestMapping("show")
     @ResponseBody
     public List< Complaint> show(String com_phone,Integer cau_id){
-        System.out.println(cau_id);
-        if ((com_phone==null || com_phone=="") && cau_id==null){
+        //System.out.println(cau_id);
+        //System.out.println(com_phone);
+        if ((com_phone==null || com_phone=="") && (cau_id==null)){
             List<Complaint>list1=complaintDao.showlist();
-            System.out.println(list1);
+            //System.out.println("list1    "+list1);
             return list1;
         }else{
             List<Complaint> list2=complaintDao.showmh2(com_phone,cau_id);
-            System.out.println(list2);
+            //System.out.println("list2    "+list2);
             return list2;
         }
     }
@@ -64,7 +65,7 @@ public class ComplaintCon {
     @ResponseBody
     public List<Issue_position>issquery(){
         //System.out.println(issue_positionDao.selectAll());
-        return issue_positionDao.selectAll();
+        return issue_positionDao.queryiss();
     }
 
     @RequestMapping("cau")
@@ -88,5 +89,41 @@ public class ComplaintCon {
         Integer i=complaintDao.updatecom(complaint);
         //System.out.println(i);
         return "ok";
+    }
+
+    @RequestMapping("updfhzt")
+    @ResponseBody
+    public Integer upd1(@RequestBody Complaint complaint){
+        Integer i=complaintDao.updfhzt(complaint);
+        return i;
+    }
+
+    @RequestMapping("updcljg1")
+    @ResponseBody
+    public Integer updjg1(@RequestBody Complaint complaint){
+        Integer i=complaintDao.updcljg1(complaint);
+        return i;
+    }
+
+    @RequestMapping("updcljg2")
+    @ResponseBody
+    public Integer updjg2(@RequestBody Complaint complaint){
+        Integer i=complaintDao.updcljg2(complaint);
+        return i;
+    }
+
+    @RequestMapping("updcljg3")
+    @ResponseBody
+    public Integer updjg3(@RequestBody Complaint complaint){
+        Integer i=complaintDao.updcljg3(complaint);
+        return i;
+    }
+
+    @RequestMapping("queryqb1")
+    @ResponseBody
+    public List<Complaint>queryqb1(){
+        List<Complaint>list=complaintDao.queryqb();
+        System.out.println(list);
+        return list;
     }
 }
