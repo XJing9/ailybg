@@ -1,5 +1,8 @@
+prop:
+  filepath: E:/photo/
+
 server:
-  port: 8082
+  port: 8089
   servlet:
     context-path: '/ailybg'
 
@@ -21,7 +24,6 @@ spring:
     encoding: UTF-8
     prefix: classpath:/templates/
     mode: HTML5
-
-#自定义属性
-prop:
-  filepath:D:/photos/
+  mybatis:
+    type-aliases-package: com.aaa.dao
+    mapper-locations: classpath:mapper/*.xml

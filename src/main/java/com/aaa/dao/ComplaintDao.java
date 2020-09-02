@@ -36,4 +36,10 @@ public interface ComplaintDao extends tk.mybatis.mapper.common.Mapper<Complaint>
     @Update("update Complaint set cus_id=#{cus_id},adm_id=#{adm_id},iss_id=#{iss_id},cau_id=#{cau_id},com_phone=#{com_phone}," +
             "com_auditstate=#{com_auditstate},com_result=#{com_result},com_state=#{com_state},com_remark=#{com_remark} where com_id=#{com_id}")
     Integer updatecom(Complaint complaint);
+
+    @Update("update Complaint set com_auditstate=#{com_auditstate} where com_id=#{com_id}")
+    Integer updfhzt(Complaint complaint);
+
+    @Update("update Complaint set com_state=#{com_state} where com_id=#{com_id}")
+    Integer updclzt(Complaint complaint);
 }

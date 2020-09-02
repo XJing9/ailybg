@@ -1,7 +1,7 @@
 package com.aaa.entity;
 
 import javax.persistence.Id;
-//管理员表
+
 public class Admins {
     @Id
     private Integer adm_id;

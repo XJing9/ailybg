@@ -40,6 +40,12 @@ public class ComplaintCon {
         }
     }
 
+    @RequestMapping("showlist1")
+    @ResponseBody
+    public List<Complaint>showlist1(){
+        return complaintDao.showlist();
+    }
+
     @RequestMapping("add")
     @ResponseBody
     public String add(@RequestBody Complaint complaint){
@@ -98,32 +104,11 @@ public class ComplaintCon {
         return i;
     }
 
-    @RequestMapping("updcljg1")
+    @RequestMapping("updclzt")
     @ResponseBody
-    public Integer updjg1(@RequestBody Complaint complaint){
-        Integer i=complaintDao.updcljg1(complaint);
+    public Integer upd2(@RequestBody Complaint complaint){
+        Integer i=complaintDao.updclzt(complaint);
         return i;
     }
 
-    @RequestMapping("updcljg2")
-    @ResponseBody
-    public Integer updjg2(@RequestBody Complaint complaint){
-        Integer i=complaintDao.updcljg2(complaint);
-        return i;
-    }
-
-    @RequestMapping("updcljg3")
-    @ResponseBody
-    public Integer updjg3(@RequestBody Complaint complaint){
-        Integer i=complaintDao.updcljg3(complaint);
-        return i;
-    }
-
-    @RequestMapping("queryqb1")
-    @ResponseBody
-    public List<Complaint>queryqb1(){
-        List<Complaint>list=complaintDao.queryqb();
-        System.out.println(list);
-        return list;
-    }
 }

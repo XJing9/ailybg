@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import com.aaa.dao.PhotoDao;
+import com.aaa.util.FileRule;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Date;
 
 @CrossOrigin
 @RestController
@@ -24,10 +26,57 @@ public class PhotoCon {
 
     //默认获取application文件中的属性值
     @Value("${prop.filepath}")
-    String filepath;
+    String staticurl;
 
 
-    @RequestMapping("add")
+    FileRule fileRule=new FileRule();
+    //添加节目数据
+    @RequestMapping("addphoto")
+    public int insertprograminfo(@RequestParam("file") MultipartFile file,String pname,Integer acid,String psource,
+                                 Integer chapterorder,Integer ptid,Integer pstate,Double allprice,String pintroduction,
+                                 Integer flag,String backstage_uname){
+
+        String photourl="";
+        try{
+            String flag1=flag.toString();
+            photourl=fileRule.fileupload(staticurl,file,backstage_uname,flag1);
+        }catch (Exception error){
+            error.printStackTrace();
+        }
+        Programinfo programinfo=new Programinfo();
+        programinfo.setPname(pname);
+        programinfo.setPoster(photourl);
+        programinfo.setPintroduction(pintroduction);
+        programinfo.setPtid(ptid);
+        programinfo.setPsource(psource);
+        programinfo.setAnchortid(acid);
+        programinfo.setChapterorder(chapterorder);
+        programinfo.setPcreatedate(new Date());
+        programinfo.setBuycount(0);
+        programinfo.setPstate(pstate);
+        programinfo.setAllprice(allprice);
+        programinfo.setPstatus(0);
+        System.out.println(programinfo);
+        return programinfoService.insertprograminfo(programinfo);
+    }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*@RequestMapping("add")
     @ResponseBody
     public String addpho(@RequestParam("photo") MultipartFile[] photo)throws IOException {
         for (MultipartFile f:photo){
@@ -48,9 +97,9 @@ public class PhotoCon {
             }
         }
         return "ok";
-    }
+    }*/
 
-    @RequestMapping("download")
+    /*@RequestMapping("download")
     public void download(String fileName, HttpServletRequest request, HttpServletResponse response) throws Exception{
         //读取源文件将文件内容响应给浏览器
         File file=new File(filepath+fileName);
@@ -71,9 +120,6 @@ public class PhotoCon {
         //复制文件
         FileCopyUtils.copy(fileInputStream,outputStream);
     }*/
-
-
-
 }
 
 
