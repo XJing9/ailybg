@@ -4,10 +4,7 @@ import com.aaa.dao.AreaDao;
 import com.aaa.dao.EntrepreneurDao;
 import com.aaa.dao.IndustryDao;
 import com.aaa.dao.Issue_positionDao;
-import com.aaa.entity.Area;
-import com.aaa.entity.Entreprenenur;
-import com.aaa.entity.Industry;
-import com.aaa.entity.Issue_position;
+import com.aaa.entity.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -114,5 +111,19 @@ public class EntrepreneurCon {
     public Integer updatezt(@RequestBody Entreprenenur entreprenenur){
         Integer i=entrepreneurDao.updzt(entreprenenur);
         return i;
+    }
+
+    @RequestMapping("queryd")
+    @ResponseBody
+    public List<Issue_position>queryd(Integer ent_id){
+        List<Issue_position>list=entrepreneurDao.dequery(ent_id);
+        return list;
+    }
+
+    @RequestMapping("query2d")
+    @ResponseBody
+    public List<Interview>query2d(Integer ent_id){
+        List<Interview>list=entrepreneurDao.de2query(ent_id);
+        return list;
     }
 }

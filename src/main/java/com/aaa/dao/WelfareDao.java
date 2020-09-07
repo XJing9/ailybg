@@ -13,4 +13,6 @@ public interface WelfareDao extends tk.mybatis.mapper.common.Mapper<Welfare> {
     Integer deletewel(Integer wel_id);
     @Select("select wel_id,wel_name,wel_state from Welfare where wel_name like CONCAT('%',#{wel_name},'%')")
     List<Welfare>mhquerywel(@Param("wel_name") String wel_name);
+    @Select("select wel_id,wel_name,wel_state from Welfare")
+    List<Welfare>querylist();
 }

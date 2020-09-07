@@ -1,5 +1,5 @@
 prop:
-  filepath: E:/photo/
+  filepath: D:/photo/
 
 server:
   port: 8089

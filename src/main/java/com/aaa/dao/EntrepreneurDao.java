@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Entreprenenur;
+import com.aaa.entity.Interview;
 import com.aaa.entity.Issue_position;
 import org.apache.ibatis.annotations.*;
 
@@ -40,4 +41,11 @@ public interface EntrepreneurDao extends tk.mybatis.mapper.common.Mapper<Entrepr
     //修改状态
     @Update("update entreprenenur set ent_state=#{ent_state} where ent_id=#{ent_id}")
     Integer updzt(Entreprenenur entreprenenur);
+
+    @Select("select * from Issue_position where ent_id=#{ent_id}")
+    List<Issue_position>dequery(Integer ent_id);
+
+    @Select("select * from interview where ent_id=#{ent_id}")
+    List<Interview>de2query(Integer ent_id);
+
 }

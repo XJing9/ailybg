@@ -60,4 +60,10 @@ public class WelfareCon {
         }
     }
 
+    @RequestMapping("queryl")
+    @ResponseBody
+    public List<Welfare>queryl(){
+        return welfareDao.querylist();
+    }
+
 }

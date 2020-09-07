@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import com.aaa.dao.PhotoDao;
+import com.aaa.entity.Photo;
 import com.aaa.util.FileRule;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.FileCopyUtils;
@@ -15,13 +16,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin
 @RestController
 @RequestMapping("Photo")
 public class PhotoCon {
-    /*@Resource
+    @Resource
     private PhotoDao photoDao;
 
     //默认获取application文件中的属性值
@@ -29,40 +32,49 @@ public class PhotoCon {
     String staticurl;
 
 
-    FileRule fileRule=new FileRule();
+    private FileRule fileRule=new FileRule();
     //添加节目数据
-    @RequestMapping("addphoto")
-    public int insertprograminfo(@RequestParam("file") MultipartFile file,String pname,Integer acid,String psource,
-                                 Integer chapterorder,Integer ptid,Integer pstate,Double allprice,String pintroduction,
-                                 Integer flag,String backstage_uname){
+    @RequestMapping("insertadphoto")
+    public int insertprograminfo(@RequestParam("file") MultipartFile file,Integer pho_state){
 
         String photourl="";
         try{
-            String flag1=flag.toString();
-            photourl=fileRule.fileupload(staticurl,file,backstage_uname,flag1);
+            photourl=fileRule.fileupload(staticurl,file);
         }catch (Exception error){
             error.printStackTrace();
         }
-        Programinfo programinfo=new Programinfo();
-        programinfo.setPname(pname);
-        programinfo.setPoster(photourl);
-        programinfo.setPintroduction(pintroduction);
-        programinfo.setPtid(ptid);
-        programinfo.setPsource(psource);
-        programinfo.setAnchortid(acid);
-        programinfo.setChapterorder(chapterorder);
-        programinfo.setPcreatedate(new Date());
-        programinfo.setBuycount(0);
-        programinfo.setPstate(pstate);
-        programinfo.setAllprice(allprice);
-        programinfo.setPstatus(0);
-        System.out.println(programinfo);
-        return programinfoService.insertprograminfo(programinfo);
+        Photo photo=new Photo();
+        photo.setPho_photo(photourl);
+        photo.setPho_state(pho_state);
+        Integer i=photoDao.insert(photo);
+        return i;
     }
-*/
 
 
+    @RequestMapping("query")
+    @ResponseBody
+    public List<Photo>quepho(){
+        return photoDao.querypho();
+    }
 
+    @RequestMapping("delete")
+    @ResponseBody
+    public Integer deletepho(Integer pho_id){
+        Integer i=photoDao.delpho(pho_id);
+        return i;
+    }
+
+
+    @RequestMapping("deleteBatchLogs")
+    @ResponseBody
+    public String deleteBatchLogs(@RequestBody  String pho_id){
+        String[] stuList = pho_id.split(",");
+        for(String str : stuList){
+            System.out.println(str);
+            photoDao.pldel(str);
+        }
+        return "success";
+    }
 
 
 

@@ -56,4 +56,10 @@ public class SpecialityCon {
             return list2;
         }
     }
+
+    @RequestMapping("queryl")
+    @ResponseBody
+    public List<Speciality>queryl(){
+        return specialityDao.queryqb();
+    }
 }

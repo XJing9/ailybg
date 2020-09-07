@@ -13,6 +13,7 @@ public class Issue_position {
     private String iss_address;
     private String iss_describe;
     private Integer iss_state;
+    private String ent_name;
 
     public Issue_position() {
     }
@@ -128,6 +129,14 @@ public class Issue_position {
         this.iss_state = iss_state;
     }
 
+    public String getEnt_name() {
+        return ent_name;
+    }
+
+    public void setEnt_name(String ent_name) {
+        this.ent_name = ent_name;
+    }
+
     @Override
     public String toString() {
         return "Issue_position{" +
@@ -143,6 +152,7 @@ public class Issue_position {
                 ", iss_address='" + iss_address + '\'' +
                 ", iss_describe='" + iss_describe + '\'' +
                 ", iss_state=" + iss_state +
+                ", ent_name='" + ent_name + '\'' +
                 '}';
     }
 }

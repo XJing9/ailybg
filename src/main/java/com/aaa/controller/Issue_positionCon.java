@@ -30,6 +30,12 @@ public class Issue_positionCon {
         }
     }
 
+    @RequestMapping("queryl")
+    @ResponseBody
+    public List<Issue_position>queryl(){
+        return issue_positionDao.queryiss();
+    }
+
     @RequestMapping("add")
     @ResponseBody
     public String addiss(@RequestBody Issue_position issue_position){
@@ -55,5 +61,12 @@ public class Issue_positionCon {
     @ResponseBody
     public List<Entreprenenur>showent(){
         return entrepreneurDao.queryent();
+    }
+
+    @RequestMapping("updzt1")
+    @ResponseBody
+    public Integer updzt1(@RequestBody Issue_position issue_position){
+        Integer i=issue_positionDao.updzt(issue_position);
+        return i;
     }
 }

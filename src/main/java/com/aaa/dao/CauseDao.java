@@ -18,5 +18,5 @@ public interface CauseDao extends tk.mybatis.mapper.common.Mapper<Cause>{
     Integer Update(Cause cause);
 
     @Delete("delete from cause where cau_id=#{cau_id}")
-    Integer delete(Integer cau_id);
+    Integer deletes(Integer cau_id);
 }

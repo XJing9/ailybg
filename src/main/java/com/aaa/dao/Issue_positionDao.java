@@ -21,4 +21,7 @@ public interface Issue_positionDao extends tk.mybatis.mapper.common.Mapper<Issue
 
     @Delete("delete from Issue_position where iss_id=#{iss_id}")
     Integer deleteiss(Integer iss_id);
+
+    @Update("update Issue_position set iss_state=#{iss_state} where iss_id=#{iss_id}")
+    Integer updzt(Issue_position issue_position);
 }

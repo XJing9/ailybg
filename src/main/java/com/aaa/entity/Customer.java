@@ -16,7 +16,7 @@ public class Customer {
     private String cus_email;
     private String cus_idcard;
     private Integer cus_height;
-    private Integer cus_marital;
+    private String cus_marital;
     private String cus_koseki;
     private String cus_nativeplace;
     private String cus_introduce;
@@ -25,7 +25,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer cus_id, String cus_name, String cus_pwd, String cus_truename, String cus_sex, String cus_birthday, String cus_address, String cus_phone, Date cus_registertime, Date cus_logintime, String cus_email, String cus_idcard, Integer cus_height, Integer cus_marital, String cus_koseki, String cus_nativeplace, String cus_introduce, Integer cus_state) {
+    public Customer(Integer cus_id, String cus_name, String cus_pwd, String cus_truename, String cus_sex, String cus_birthday, String cus_address, String cus_phone, Date cus_registertime, Date cus_logintime, String cus_email, String cus_idcard, Integer cus_height, String cus_marital, String cus_koseki, String cus_nativeplace, String cus_introduce, Integer cus_state) {
         this.cus_id = cus_id;
         this.cus_name = cus_name;
         this.cus_pwd = cus_pwd;
@@ -150,11 +150,11 @@ public class Customer {
         this.cus_height = cus_height;
     }
 
-    public Integer getCus_marital() {
+    public String getCus_marital() {
         return cus_marital;
     }
 
-    public void setCus_marital(Integer cus_marital) {
+    public void setCus_marital(String cus_marital) {
         this.cus_marital = cus_marital;
     }
 
